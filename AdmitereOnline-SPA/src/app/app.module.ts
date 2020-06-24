@@ -10,13 +10,26 @@ import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { AdmitereComponent } from './admitere/admitere.component';
+import { UniversitateComponent } from './universitate/universitate.component';
+import { ReglementariComponent } from './reglementari/reglementari.component';
+import { FacultatiComponent } from './facultati/facultati.component';
+import { MessagesComponent } from './messages/messages.component';
+import { RouterModule } from '@angular/router';
+import { appRoutes } from './routes';
+
 
 @NgModule({
    declarations: [
       AppComponent,
       NavComponent,
       HomeComponent,
-      RegisterComponent
+      RegisterComponent,
+      AdmitereComponent,
+      UniversitateComponent,
+      ReglementariComponent,
+      FacultatiComponent,
+      MessagesComponent
    ],
    imports: [
       BrowserModule,
@@ -24,10 +37,11 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
       FormsModule,
       BrowserAnimationsModule,
       BsDropdownModule.forRoot(),
+      RouterModule.forRoot(appRoutes)
    ],
    providers: [
       AuthService,
-      ErrorInterceptorProvider,
+      ErrorInterceptorProvider
    ],
    bootstrap: [
       AppComponent
