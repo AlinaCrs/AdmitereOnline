@@ -1,0 +1,14 @@
+.page-section {
+    padding: 4rem 0;
+    border: 1px solid black;
+    margin: 25px 50px 75px 100px;
+    border-radius: 15px;
+  }
+  .bg-primary {
+    background-color: grey;
+  }
+  .btn {
+      background-color: lightpink;
+      }
+  
+  

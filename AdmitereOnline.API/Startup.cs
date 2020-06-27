@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using AdmitereOnline.API.Data;
+using AdmitereOnline.API.Controllers;
 using AdmitereOnline.API.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -34,10 +35,12 @@ namespace AdmitereOnline.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+          //  services.AddDbContextPool<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContextPool<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("AdmitereOnlineDatabase")));
             services.AddControllers();
             services.AddCors();
-            services.AddScoped<IAuthRepository, AuthRepository>();                          
+            services.AddScoped<IAuthRepository, AuthRepository>();  
+           // services.AddScoped<UploadController>();                        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

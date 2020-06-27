@@ -12,12 +12,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AdmitereComponent } from './admitere/admitere.component';
 import { UniversitateComponent } from './universitate/universitate.component';
-import { ReglementariComponent } from './reglementari/reglementari.component';
 import { FacultatiComponent } from './facultati/facultati.component';
-import { MessagesComponent } from './messages/messages.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
-
+import { ContactComponent } from './contact/contact.component';
+import { ExamComponent } from './exam/exam.component';
+import { RezultateComponent } from './rezultate/rezultate.component';
+import { DocumenteComponent } from './documente/documente.component';
 
 @NgModule({
    declarations: [
@@ -27,9 +28,11 @@ import { appRoutes } from './routes';
       RegisterComponent,
       AdmitereComponent,
       UniversitateComponent,
-      ReglementariComponent,
       FacultatiComponent,
-      MessagesComponent
+      ContactComponent,
+      ExamComponent,
+      RezultateComponent,
+      DocumenteComponent
    ],
    imports: [
       BrowserModule,
