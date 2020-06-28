@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
@@ -19,6 +19,13 @@ import { ContactComponent } from './contact/contact.component';
 import { ExamComponent } from './exam/exam.component';
 import { RezultateComponent } from './rezultate/rezultate.component';
 import { DocumenteComponent } from './documente/documente.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { ProfileComponent } from './profile/profile.component';
+import { ViewdocsComponent } from './viewdocs/viewdocs.component';
+
+
+
+
 
 @NgModule({
    declarations: [
@@ -32,7 +39,10 @@ import { DocumenteComponent } from './documente/documente.component';
       ContactComponent,
       ExamComponent,
       RezultateComponent,
-      DocumenteComponent
+      DocumenteComponent,
+      ProfileComponent,
+      ViewdocsComponent,
+     
    ],
    imports: [
       BrowserModule,
@@ -40,7 +50,9 @@ import { DocumenteComponent } from './documente/documente.component';
       FormsModule,
       BrowserAnimationsModule,
       BsDropdownModule.forRoot(),
-      RouterModule.forRoot(appRoutes)
+      RouterModule.forRoot(appRoutes),
+      MatGridListModule,
+      ReactiveFormsModule
    ],
    providers: [
       AuthService,

@@ -1,4 +1,4 @@
- <nav class="navbar navbar-expand-md navbar-dark  bg-primary">
+ <nav class="navbar navbar-expand-sm navbar-dark  bg-primary">
   <div class="container">
     <a class="navbar-brand" [routerLink]="['/home']">Admitere Online</a>
 
@@ -16,6 +16,9 @@
        <li *ngIf="loggedIn()" class="nav-item"  routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/reglementari']">Reglementări</a>
        </li>
+       <li class="nav-item"  routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/viewdocs']">ViewDocs</a>
+       </li>
       
       </ul>
 
@@ -25,7 +28,7 @@
       </a>
     
       <div class="dropdown-menu mt-3" *dropdownMenu>
-        <a class="dropdown-item" href="#"><i class="fa fa-user"></i>Edit Profile</a>
+        <a class="dropdown-item" [routerLink]="['/profile']" routerLinkActive="router-link-active" ><i class="fa fa-user"></i>Edit Profile</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out"></i>Logout</a>
       </div>

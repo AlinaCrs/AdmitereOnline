@@ -8,6 +8,8 @@ import { ContactComponent} from './contact/contact.component';
 import { ExamComponent } from './exam/exam.component';
 import { RezultateComponent } from './rezultate/rezultate.component';
 import { DocumenteComponent} from './documente/documente.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ViewdocsComponent} from './viewdocs/viewdocs.component';
 
 
 
@@ -15,11 +17,14 @@ export const appRoutes: Routes = [
      { path: 'home', component: HomeComponent},
      { path: 'universitate', component: UniversitateComponent},
      { path: 'facultati', component: FacultatiComponent},
-     { path: 'admitere', component: AdmitereComponent, canActivate: [AuthGuard]},
+     { path: 'admitere', component: AdmitereComponent},
+     //  { path: 'admitere', component: AdmitereComponent, canActivate: [AuthGuard]},
      { path: 'contact', component: ContactComponent},
      { path: 'exam', component: ExamComponent},
      { path: 'rezultate', component : RezultateComponent},
      { path: 'documente', component: DocumenteComponent},
+     { path: 'profile', component: ProfileComponent},
+     { path: 'viewdocs',component: ViewdocsComponent},
      {path: '**', redirectTo: 'home', pathMatch: 'full'},
 
 ];

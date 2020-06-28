@@ -51,7 +51,7 @@ export class DocumenteComponent implements OnInit {
       return formData.append('file'+index, file, file.name);
     });
 
-    this.http.post('http://localhost:5000/upload', formData, {reportProgress: true, observe: 'events'})
+    this.http.post('https://localhost:44320/Upload', formData, {reportProgress: true, observe: 'events'})
       .subscribe(event => {
         if (event.type === HttpEventType.UploadProgress)
           this.progress = Math.round(100 * event.loaded / event.total);

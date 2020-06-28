@@ -69,10 +69,12 @@ namespace UploadFilesServer.Controllers
                     var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
                     var fullPath = Path.Combine(pathToSave, fileName);
                     var dbPath = Path.Combine(folderName, fileName);
-                    var document = new Document(){
-                        FileName = dbPath
+                    var document = new Document()
+                    {
+                        FileName = dbPath,
+                        UserID = 1
                     };
-                    var createdUser =  SaveDocument(document);
+                    var createdUser = SaveDocument(document);
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
                         file.CopyTo(stream);
@@ -86,11 +88,10 @@ namespace UploadFilesServer.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
-        public async Task<Document> SaveDocument(Document document)
+        public Document SaveDocument(Document document)
         {
             _context.Documents.Add(document);
-            await _context.SaveChangesAsync();
-
+            _context.SaveChanges();
             return document;
         }
     }

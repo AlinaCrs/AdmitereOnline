@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ExamService } from '../_services/exam.service';
 
 @Component({
   selector: 'app-exam',
@@ -7,9 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExamComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private examService: ExamService) { }
 
   ngOnInit() {
-  }
-
+}
 }

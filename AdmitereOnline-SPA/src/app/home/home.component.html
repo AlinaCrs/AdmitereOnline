@@ -1,10 +1,14 @@
 <div class="container mt-5">
   <div *ngIf="!registerMode" style="text-align: center">
     <h1>Admitere Online</h1><br>
-    <p class="lead">Universitatea Hyperion da startul inscrierilor pentru anul universitar 2020-2021, in data de 1 iunie 2020</p><br>
+    <p class="lead">Înscrierile pentru anul universitar 2020-2021 încep în  data de 1 iunie 2020. Pentru a aplica online este nevoie să vă creati un cont.<br>
+      Universitatea dispune de mai multe facultăţi din cadrul cărora vă puteţi alege departamentul dorit
+    </p>
+    
+    <hr class="divider">
     <div class="text-center">
       <button class="btn btn-primary btn-lg mr-2" (click)="registerToggle()">Creare cont</button>
-      <button class="btn btn-info btn-lg">Afla mai multe</button>
+      <button class="btn btn-info btn-lg" [routerLink]="['/facultati']">Afla mai multe</button>
     </div>
   </div>
 
@@ -16,4 +20,3 @@
     </div>
   </div>
 </div>
- 

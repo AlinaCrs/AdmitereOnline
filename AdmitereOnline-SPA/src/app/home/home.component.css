@@ -1,0 +1,10 @@
+hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+ }
+hr.divider {
+    max-width: 3.25rem;
+    border-width: 0.2rem;
+    border-color: #f4623a;
+}
