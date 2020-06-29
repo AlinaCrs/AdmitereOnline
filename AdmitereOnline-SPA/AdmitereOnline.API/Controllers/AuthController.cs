@@ -36,12 +36,15 @@ namespace AdmitereOnline.API.Controllers
 
             var userToCreate = new User
             {
-                Username = userForRegisterDto.Username
+                Username = userForRegisterDto.Username,
+                FullName = userForRegisterDto.FullName,
+                emailAddress = userForRegisterDto.emailAddress,
+                CNP = userForRegisterDto.CNP,
+                PhoneNo = userForRegisterDto.PhoneNo,
             };
 
             var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
-
-            return StatusCode(201);
+               return StatusCode(201);    
         }
 
         [HttpPost("login")]

@@ -20,6 +20,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using AutoMapper;
+using AdmitereOnline.API.Dtos;
 
 namespace AdmitereOnline.API
 {
@@ -39,6 +41,7 @@ namespace AdmitereOnline.API
             services.AddDbContextPool<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("AdmitereOnlineDatabase")));
             services.AddControllers();
             services.AddCors();
+            
             services.AddScoped<IAuthRepository, AuthRepository>();  
            // services.AddScoped<UploadController>();                        
         }
