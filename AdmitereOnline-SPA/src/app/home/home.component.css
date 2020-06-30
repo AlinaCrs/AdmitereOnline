@@ -8,3 +8,22 @@ hr.divider {
     border-width: 0.2rem;
     border-color: #f4623a;
 }
+.page-section {
+    padding: 4rem 0;
+    border: 1px solid black;
+    margin: 25px 50px 75px 100px;
+    border-radius: 15px;
+  }
+  .bg-primary {
+    background-color: grey;
+  }
+
+  
+  .btn-primary {
+        background-image: linear-gradient(#f4623a, #f4623a 60%, #f4623a);
+  }
+
+  .btn-success {
+    background-image: linear-gradient(#78cc78, #62c462 60%, #53be53);
+  }
+

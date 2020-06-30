@@ -1,11 +1,16 @@
-<div class="container mt-5">
+<section class="page-section bg-primary" id="Universitate">
+  
+    <div class="row justify-content-center">
+    <div class="col-lg-8 text-center">
+
+  <div class="container mt-5">
   <div *ngIf="!registerMode" style="text-align: center">
     <h1>Admitere Online</h1><br>
+    <hr class="divider">
     <p class="lead">Înscrierile pentru anul universitar 2020-2021 încep în  data de 1 iunie 2020. Pentru a aplica online este nevoie să vă creati un cont.<br>
-      Universitatea dispune de mai multe facultăţi din cadrul cărora vă puteţi alege departamentul dorit
+      Universitatea dispune de mai multe facultăţi din cadrul cărora vă puteţi alege departamentul dorit.
     </p>
     
-    <hr class="divider">
     <div class="text-center">
       <button class="btn btn-primary btn-lg mr-2" (click)="registerToggle()">Creare cont</button>
       <button class="btn btn-info btn-lg" [routerLink]="['/facultati']">Afla mai multe</button>
@@ -20,3 +25,7 @@
     </div>
   </div>
 </div>
+
+</div>
+</div>
+</section>

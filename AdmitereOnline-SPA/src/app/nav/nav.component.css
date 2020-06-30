@@ -9,5 +9,17 @@
     cursor:pointer;
 }
 
+.btn-success {
+    background-image: linear-gradient(#f4623a, #e25c27ea 60%, #f4623a);
+    background-repeat: no-repeat;
+    -webkit-filter: none;
+    filter: none;
+    color: #fff;
+}
+.btn-success.disabled, .btn-success:disabled {
+    color: #fff;
+    background-color: #f4623a;
+    border-color: #f4623a;
+}
   
   

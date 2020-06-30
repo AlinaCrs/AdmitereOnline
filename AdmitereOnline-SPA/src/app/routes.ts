@@ -17,14 +17,14 @@ export const appRoutes: Routes = [
      { path: 'home', component: HomeComponent},
      { path: 'universitate', component: UniversitateComponent},
      { path: 'facultati', component: FacultatiComponent},
-     { path: 'admitere', component: AdmitereComponent},
-     //  { path: 'admitere', component: AdmitereComponent, canActivate: [AuthGuard]},
+     
+     { path: 'admitere', component: AdmitereComponent, canActivate: [AuthGuard]},
      { path: 'contact', component: ContactComponent},
      { path: 'exam', component: ExamComponent},
      { path: 'rezultate', component : RezultateComponent},
-     { path: 'documente', component: DocumenteComponent},
+     { path: 'documente', component: DocumenteComponent, canActivate: [AuthGuard]},
      { path: 'profile', component: ProfileComponent},
-     { path: 'viewdocs',component: ViewdocsComponent},
+     { path: 'viewdocs',component: ViewdocsComponent, canActivate: [AuthGuard]},
      {path: '**', redirectTo: 'home', pathMatch: 'full'},
 
 ];

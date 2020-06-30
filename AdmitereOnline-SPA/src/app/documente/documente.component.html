@@ -1,12 +1,26 @@
-<!-- 
-<form action="/action_page.php">
-  <input type="file" id="myFile" name="filename">
-  <input type="submit">
-</form> -->
-<div class="row" style="margin-bottom:15px;">
-  <div class="col-md-3">
+<section class="page-section bg-primary">
+  <div class="row justify-content-center">
+  <div class="col-lg-8 text-center">
+
+    <div class="col-xs-9">
+    <div class="panel-body">
+      <p style="color:darkorange">DOSARUL DE ÎNSCRIERE TREBUIE SĂ CUPRINDĂ:</p>
+      <br>Copie diploma de bacalaureat
+      <br>Copie adeverinţă medicală
+      <br>Copie CI/BI
+      <br>Copie chitanţa de achitare a taxei de înscriere (150 lei);
+    </div>
+<hr divider>
+</div>
+
+<div class="col-xs-4">
+    <p class="text-white-50 mb-4">ÎNCARCARE DOCUMENTE</p>
+    <hr class="divider">
+    <p>Pentru a încărca documentele, vă rugăm să selectaţi toate documentele în acelasi timp.<br>
+      Fiecare document trebuie să conţină numele dumneavoastră, precum si numele documentului.</p>
+
     <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;" multiple> <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
-  </div>
+  
   <div class="col-md-4">
     <span class="upload" *ngIf="progress > 0">
       {{progress}}%
@@ -14,6 +28,10 @@
     <span class="upload" *ngIf="message">
       {{message}}
     </span>
+   </div>
+    </div>
+    <hr>
   </div>
-</div>
+  </div>
+</section>
 
