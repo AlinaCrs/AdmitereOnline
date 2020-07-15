@@ -1,4 +1,4 @@
-<form [formGroup]="registerForm" (ngSubmit)="register()">
+<!-- <form [formGroup]="registerForm" (ngSubmit)="register()">
   <h2 class="text-center text-primary">Sign Up</h2>
   <hr>
 
@@ -91,3 +91,96 @@
   
 </form>
 
+ -->
+ <form [formGroup]="registerForm" (ngSubmit)="register()">
+  <h2 class="text-center text-primary">Sign Up</h2>
+  <hr>
+
+  <div class="form-group">
+    <input type="text" 
+      [ngClass]="{'is-invalid': registerForm.get('username').errors 
+        && registerForm.get('username').touched}"
+      class="form-control" 
+      formControlName="username" 
+      placeholder="Username">
+    <div class="invalid-feedback">Alege un nume de utilizator</div>
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': registerForm.get('FullName').errors && registerForm.get('FullName').touched}" class="form-control"
+      placeholder="Nume si prenume" formControlName="FullName">
+    <div class="invalid-feedback" *ngIf="registerForm.get('FullName').touched && registerForm.get('FullName').hasError('required')">Numele complet este necesar</div>
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': registerForm.get('emailAddress').errors && registerForm.get('emailAddress').touched}" class="form-control"
+      placeholder="Adresa de e-mail" formControlName="emailAddress">
+    <div class="invalid-feedback" *ngIf="registerForm.get('emailAddress').touched && registerForm.get('emailAddress').hasError('required')">Adresa de e-mail este necesara</div>
+  </div>
+
+
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': registerForm.get('CNP').errors && registerForm.get('CNP').touched}" class="form-control"
+      placeholder="CNP" formControlName="CNP">
+    <div class="invalid-feedback" *ngIf="registerForm.get('CNP').touched && registerForm.get('CNP').hasError('required')">CNP-ul este necesar</div>
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': registerForm.get('PhoneNo').errors && registerForm.get('PhoneNo').touched}" class="form-control"
+      placeholder="Numar de telefon" formControlName="PhoneNo">
+    <div class="invalid-feedback" *ngIf="registerForm.get('PhoneNo').touched && registerForm.get('PhoneNo').hasError('required')">Numarul de telefon este necesar</div>
+  </div>
+
+  <div class="form-group">
+    <input type="password" 
+      [ngClass]="{'is-invalid': registerForm.get('password').errors 
+        && registerForm.get('password').touched}"
+      class="form-control" 
+      formControlName="password" 
+      placeholder="Password">
+      <div class="invalid-feedback" 
+        *ngIf="registerForm.get('password').hasError('required') 
+          && registerForm.get('password').touched">
+          Password is required
+      </div>
+      <div class="invalid-feedback" 
+      *ngIf="registerForm.get('password').hasError('minlength') 
+        && registerForm.get('password').touched">
+        Password must be at least 4 characters
+    </div>
+    <div class="invalid-feedback" 
+    *ngIf="registerForm.get('password').hasError('maxlength') 
+      && registerForm.get('password').touched">
+      Password cannot exceed 8 characters
+  </div>
+  </div>
+
+
+  <div class="form-group">
+      <input 
+        [ngClass]="{'is-invalid': registerForm.get('confirmPassword').errors 
+          && registerForm.get('confirmPassword').touched
+          || registerForm.get('confirmPassword').touched
+          && registerForm.hasError('mismatch')}"
+        type="password" 
+        class="form-control" 
+        formControlName="confirmPassword" 
+        placeholder="Confirm Password">
+        <div class="invalid-feedback" 
+        *ngIf="registerForm.get('confirmPassword').hasError('required') 
+          && registerForm.get('confirmPassword').touched">
+          Confirm Password is required
+      </div>
+      <div class="invalid-feedback" 
+      *ngIf="registerForm.hasError('mismatch') 
+        && registerForm.get('confirmPassword').touched">
+        Parola trebuie sa coincida
+    </div>
+    </div>
+
+  <div class="form-group text-center">
+    <button class="btn btn-success" [disabled]="!registerForm.valid" type="submit">Register</button>
+    <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
+  </div>
+  
+</form>

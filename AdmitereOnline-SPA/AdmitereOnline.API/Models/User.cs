@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Identity;
 namespace AdmitereOnline.API.Models
 {
     public class User 
-    //: IdentityUser<int>
     {
          public int Id { get; set;}
 
@@ -16,7 +15,8 @@ namespace AdmitereOnline.API.Models
          public string emailAddress { get; set; }
          public string CNP { get; set; }
          public string PhoneNo { get; set; }
-       //  public ICollection<UserRole> UserRoles  { get; set; }
+         public string Role { get; set; }
+        public ICollection<Document> Documents { get; set; }
 
     }
 }

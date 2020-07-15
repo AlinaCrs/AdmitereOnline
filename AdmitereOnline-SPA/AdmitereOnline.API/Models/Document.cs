@@ -5,7 +5,7 @@ namespace AdmitereOnline.API.Models
     {
         public int DocumentId { get; set; }
         public string FileName { get; set; }
-        public int UserID { get; set; }
+        public int UserId { get; set; }
 
     }
 }

@@ -1,4 +1,4 @@
-  
+
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +22,7 @@ namespace AdmitereOnline.API.Controllers
         private readonly IConfiguration _config;
         public AuthController(IAuthRepository repo, IConfiguration config)
         {
-           _config = config;
+            _config = config;
             _repo = repo;
         }
 
@@ -45,7 +45,7 @@ namespace AdmitereOnline.API.Controllers
             };
 
             var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
-               return StatusCode(201);    
+            return StatusCode(201);
         }
 
         [HttpPost("login")]
@@ -59,14 +59,17 @@ namespace AdmitereOnline.API.Controllers
 
             var claims = new[]
             {
-                new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
+                new Claim(ClaimTypes.NameIdentifier,
+                 userFromRepo.Id.ToString()),
                 new Claim(ClaimTypes.Name, userFromRepo.Username )
             };
-             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
+            var key = new SymmetricSecurityKey(Encoding.UTF8
+                .GetBytes(_config.GetSection("AppSettings:Token").Value));
 
-             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+            var creds = new SigningCredentials(key, 
+                        SecurityAlgorithms.HmacSha512Signature);
 
-             var tokenDescriptor = new SecurityTokenDescriptor
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
                 Expires = System.DateTime.Now.AddDays(1),
@@ -77,7 +80,8 @@ namespace AdmitereOnline.API.Controllers
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
-            return Ok(new {
+            return Ok(new
+            {
                 token = tokenHandler.WriteToken(token)
             });
         }

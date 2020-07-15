@@ -16,14 +16,9 @@ import { FacultatiComponent } from './facultati/facultati.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { ContactComponent } from './contact/contact.component';
-import { ExamComponent } from './exam/exam.component';
-import { RezultateComponent } from './rezultate/rezultate.component';
 import { DocumenteComponent } from './documente/documente.component';
 import {MatGridListModule} from '@angular/material/grid-list';
-import { ProfileComponent } from './profile/profile.component';
 import { ViewdocsComponent } from './viewdocs/viewdocs.component';
-
-
 
 
 
@@ -37,12 +32,9 @@ import { ViewdocsComponent } from './viewdocs/viewdocs.component';
       UniversitateComponent,
       FacultatiComponent,
       ContactComponent,
-      ExamComponent,
-      RezultateComponent,
       DocumenteComponent,
-      ProfileComponent,
       ViewdocsComponent,
-     
+  
    ],
    imports: [
       BrowserModule,
@@ -56,7 +48,7 @@ import { ViewdocsComponent } from './viewdocs/viewdocs.component';
    ],
    providers: [
       AuthService,
-      ErrorInterceptorProvider
+      ErrorInterceptorProvider,
    ],
    bootstrap: [
       AppComponent

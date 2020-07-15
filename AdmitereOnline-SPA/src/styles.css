@@ -4,8 +4,22 @@
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
 @import '../node_modules/alertifyjs/build/css/alertify.min.css';
 @import'../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body {
+   height: 100%; 
+  }
+
+body {
+  margin: 0;
+  font: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #aaa;
+  text-align: left;
+  background-color: #272B30;
+  letter-spacing: normal;
+}
 
 .bg-light {
   background-color: #272B30;
@@ -16,3 +30,10 @@ a.bg-light:hover, a.bg-light:focus {
   background-color: #272B30; 
   height: 2.5rem; 
 }
+
+footer {
+  position: relative;
+  bottom:0;
+  height: 4em;
+  display: block;
+ }

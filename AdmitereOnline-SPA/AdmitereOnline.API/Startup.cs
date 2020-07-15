@@ -22,6 +22,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using AutoMapper;
 using AdmitereOnline.API.Dtos;
+using Microsoft.AspNetCore.Identity;
 
 namespace AdmitereOnline.API
 {
@@ -31,19 +32,33 @@ namespace AdmitereOnline.API
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
-          //  services.AddDbContextPool<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDbContextPool<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("AdmitereOnlineDatabase")));
-            services.AddControllers();
+        {    
+            services.AddDbContextPool<DataContext>
+            (x => x.UseSqlServer(Configuration.GetConnectionString("AdmitereOnlineDatabase")));
+            services.AddControllers(options => options.EnableEndpointRouting = false);
             services.AddCors();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddScoped<IAuthRepository, AuthRepository>();
+
             
-            services.AddScoped<IAuthRepository, AuthRepository>();  
-           // services.AddScoped<UploadController>();                        
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection
+                   ("AppSettings:Token").Value)),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,37 +70,41 @@ namespace AdmitereOnline.API
             }
             else
             {
-                app.UseExceptionHandler(builder => {
-                    builder.Run(async context => {
+                app.UseExceptionHandler(builder =>
+                {
+                    builder.Run(async context =>
+                    {
                         context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
                         var error = context.Features.Get<IExceptionHandlerFeature>();
                         if (error != null)
-                        {          
+                        {
                             context.Response.AddApplicationError(error.Error.Message);
                             await context.Response.WriteAsync(error.Error.Message);
-                          
+
                         }
                     });
                 });
             }
 
-           // app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
-           app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-          
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
-        app.UseRouting();
 
-        app.UseAuthentication();
+            app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
+            
+            app.UseMvc();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-            
+
         }
     }
 }

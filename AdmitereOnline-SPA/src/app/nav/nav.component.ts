@@ -9,32 +9,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  model: any ={};
+  model: any = {};
 
   constructor(public authService: AuthService, private alertify: AlertifyService,
-     private router: Router) { }
+    private router: Router) { }
 
   ngOnInit() {
   }
 
 
-   login(){
-     this.authService.login(this.model).subscribe(next => {
-       this.alertify.success('Logged in successfully');
-     }, error => {
-       this.alertify.error('error');
-     }, () => {
-       this.router.navigate(['/home']); 
-     } );
-   }
+  login() {
+    this.authService.login(this.model).subscribe(next => {
+      this.alertify.success('Logged in successfully');
+    }, error => {
+      this.alertify.error('error');
+    }, () => {
+      this.router.navigate(['/home']);
+    });
+  }
 
-   loggedIn() {
-     return this.authService.loggedIn();
-   }
+  loggedIn() {
+    return this.authService.loggedIn();
+  }
 
-   logout() {
-     localStorage.removeItem('token');
-     this.alertify.message('logged out');
-     this.router.navigate(['/home']);
-   }
+  logout() {
+    localStorage.removeItem('token');
+    this.alertify.message('logged out');
+    this.router.navigate(['/home']);
+  }
 }

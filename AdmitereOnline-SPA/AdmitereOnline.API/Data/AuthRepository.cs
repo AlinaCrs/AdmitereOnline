@@ -10,7 +10,7 @@ namespace AdmitereOnline.API.Data
         private readonly DataContext _context;
         public AuthRepository(DataContext context)
         {
-           _context = context;
+            _context = context;
 
         }
         public async Task<User> Login(string username, string password)
@@ -20,16 +20,16 @@ namespace AdmitereOnline.API.Data
             if (user == null)
                 return null;
 
-            if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))  
+            if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
                 return null;
 
             return user;
-              
+
         }
 
         private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
         {
-             using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
+            using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
             {
                 var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
                 for (int i = 0; i < computedHash.Length; i++)
@@ -43,7 +43,7 @@ namespace AdmitereOnline.API.Data
         public async Task<User> Register(User user, string password)
         {
             byte[] passwordHash, passwordSalt;
-            CrearePasswordHash(password, out passwordHash,out passwordSalt);
+            CreatePasswordHash(password, out passwordHash, out passwordSalt);
 
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
@@ -56,7 +56,8 @@ namespace AdmitereOnline.API.Data
 
         }
 
-        private void CrearePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        private void CreatePasswordHash(string password, out byte[] passwordHash,
+         out byte[] passwordSalt)
         {
             using (var hmac = new System.Security.Cryptography.HMACSHA512())
             {
@@ -72,5 +73,6 @@ namespace AdmitereOnline.API.Data
 
             return false;
         }
+
     }
 }

@@ -1,0 +1,12 @@
+hr.divider {
+    max-width: 3.25rem;
+    border-width: 0.2rem;
+    border-color: #f4623a;
+  }
+
+  .page-section {
+    padding: 3rem  ;
+    border: 1px solid black;
+    border-radius: 15px;
+    margin: 25px 50px 75px;
+  }

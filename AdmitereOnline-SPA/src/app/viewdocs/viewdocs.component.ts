@@ -6,17 +6,17 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
   styleUrls: ['./viewdocs.component.css']
 })
 export class ViewdocsComponent implements OnInit {
-public doc: any
+public doc: any;
 constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.http.get<any>('https://localhost:44320/Display').subscribe(data => {
       this.doc = data;
-      this.doc.forEach(element => 
-      { let splited = element.fileName.split('\\');
-        element.name = splited[2]
+      this.doc.forEach(element =>
+      { const splitted = element.fileName.split('\\');
+        element.name = splitted[2];
       });
-  })
+  });
   }
 
 }
