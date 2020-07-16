@@ -43,6 +43,7 @@ namespace AdmitereOnline.API
             services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IDocsRepository, DocsRepository>();
 
             
 
